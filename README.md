@@ -1,1 +1,3 @@
-# legion
+# Legion
+
+Swarm borotics with python
