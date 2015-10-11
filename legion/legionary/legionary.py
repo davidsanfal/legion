@@ -1,15 +1,18 @@
 from legion.errors import LegionaryException
+from collections import namedtuple
+
+
+Point = namedtuple('Point', ['x', 'y', 'w'])
 
 
 class Legionary(object):
 
     def __init__(self):
-        self.x = 0
-        self.y = 0
-        self.w = 0
         self._speed_x = 0
         self._speed_y = 0
         self._speed_w = 0
+        self.position = Point(0, 0, 0)
+        self.destiny = Point(0, 0, 0)
 
     @property
     def speed_x(self):
@@ -53,4 +56,23 @@ class Legionary(object):
             self._engines_speed()
 
     def _engines_speed(self):
+        raise LegionaryException()
+
+    @property
+    def real_speed_x(self):
+        raise LegionaryException()
+
+    @property
+    def real_speed_y(self):
+        raise LegionaryException()
+
+    @property
+    def real_speed_w(self):
+        raise LegionaryException()
+
+    @property
+    def real_speed(self):
+        raise LegionaryException()
+
+    def go_to(self, x, y, w):
         raise LegionaryException()
