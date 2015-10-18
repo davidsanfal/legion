@@ -3,7 +3,7 @@ import time
 
 class PID(object):
 
-    def __init__(self, kp, ki, kd, out_min, out_max):
+    def __init__(self, kp=1, ki=0, kd=0, out_min=None, out_max=None):
         self._kp = kp
         self._ki = ki
         self._kd = kd
@@ -38,15 +38,10 @@ class PID(object):
 
         self._output = self._kp * (error + self._I_term + self._kd * dErr)
 
-#       if self._output > self._out_max:
-#           self._output = self._out_max
-#       else if self._output < self._out_min:
-#           self._output = self._out_min
-
-        if self._output > self._out_max:
+        if self._out_max and (self._output > self._out_max):
             self._I_term = self._I_term - self._output - self._out_max
 
-        elif self._output < self._out_min:
+        elif self._out_min and (self._output < self._out_min):
             self._I_term += self._out_min - self._output
 
         self._output = self._kp * error + self._I_term + self._kd * dErr
@@ -60,7 +55,7 @@ class PID(object):
         self._ki = ki
         self._kd = kd
 
-    def set_output_limits(self, min_out, max_out):
+    def set_output_limits(self, min_out=None, max_out=None):
         if min_out > max_out:
             return
         self._out_min = min_out
