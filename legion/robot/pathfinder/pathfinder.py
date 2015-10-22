@@ -34,15 +34,15 @@ class Pathfinder(Omnidirectional):
             _motor_2 /= _max
         _d, _spd = self._parse_speed(_motor_0)
         self.motor_0_direction = _d
-        self.motor_0_speed.duty_cycle = self.motor_0_direction.period * _spd
+        self.motor_0_speed.duty_cycle = self.motor_0_speed.period * _spd
 
         _d, _spd = self._parse_speed(_motor_1)
         self.motor_1_direction = _d
-        self.motor_1_speed.duty_cycle = self.motor_0_direction.period * _spd
+        self.motor_1_speed.duty_cycle = self.motor_1_speed.period * _spd
 
         _d, _spd = self._parse_speed(_motor_2)
         self.motor_2_direction = _d
-        self.motor_2_speed.duty_cycle = self.motor_0_direction.period * _spd
+        self.motor_2_speed.duty_cycle = self.motor_2_speed.period * _spd
 
     def _parse_speed(self, speed):
         if speed == 0:
