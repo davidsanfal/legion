@@ -1,6 +1,6 @@
 import unittest
-from legion.legionary.omnidirectional import Omnidirectional
-from legion.legionary.legionary import Legionary
+from legion.model.omnidirectional import Omnidirectional
+from legion.model.legionary import Legionary
 
 
 class OmnidirectionalTest(unittest.TestCase):

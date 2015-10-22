@@ -1,5 +1,5 @@
 from math import sin, cos, pi
-from legion.legionary.legionary import Legionary
+from legion.model.legionary import Legionary
 from legion.control.pid import PID
 import time
 
@@ -64,3 +64,12 @@ class Omnidirectional(Legionary):
         self._speed.motor1_out = self._pid_y.compute(self._speed.motor1_in, self._speed.motor1)
         self._speed.motor2_out = self._pid_w.compute(self._speed.motor2_in, self._speed.motor2)
         self.last_time = now
+
+    def open_move(self, x, y, w):
+        self.speed.x_out = x
+        self.speed.y_out = y
+        self.speed.w_out = x
+        self.calculate_motor_in_speeds()
+        self._speed.motor0_out = self._speed.motor0_in
+        self._speed.motor1_out = self._speed.motor1_in
+        self._speed.motor2_out = self._speed.motor2_in
